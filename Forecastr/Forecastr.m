@@ -275,9 +275,9 @@ NSString *const kFCNearestStormBearing = @"nearestStormBearing";
         return (errorMsg.length) ? errorMsg : error.localizedDescription;
     } else if ([response isKindOfClass:[AFHTTPRequestOperation class]]) {
         AFHTTPRequestOperation *operation = (AFHTTPRequestOperation *)response;
-        int statusCode = operation.response.statusCode;
+        NSInteger statusCode = operation.response.statusCode;
         NSString *errorMsg = [NSHTTPURLResponse localizedStringForStatusCode:statusCode];
-        return [errorMsg stringByAppendingFormat:@" (code %d)", statusCode];
+        return [errorMsg stringByAppendingFormat:@" (code %ld)", (long)statusCode];
     } else {
         return error.localizedDescription;
     }
